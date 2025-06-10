@@ -132,25 +132,20 @@ const About = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a192f] relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a192f] via-[#112240] to-[#0a192f] opacity-50"></div>
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNGMwIDEuMS0uOSAyLTIgMnMtMi0uOS0yLTIgLjktMiAyLTIgMiAuOSAyIDJ6IiBmaWxsPSIjNjRmZmRhIiBmaWxsLW9wYWNpdHk9Ii4xIi8+PC9nPjwvc3ZnPg==')] opacity-10"></div>
-      
-      <motion.section 
-        style={{ opacity, scale }}
-        className="relative py-20 px-4 text-center"
-      >
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white pt-0">
+      {/* Hero Section */}
+      <section className="relative py-20 px-4 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl mx-auto"
+          className="max-w-4xl mx-auto mt-24"
         >
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-6xl font-bold text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#64ffda] to-[#4cd8b2]"
+            className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight text-white"
           >
             About Us
           </motion.h1>
@@ -163,18 +158,18 @@ const About = () => {
             We're a team of digital innovators passionate about creating exceptional online experiences
           </motion.p>
         </motion.div>
-      </motion.section>
+      </section>
 
-      <section className="max-w-7xl mx-auto px-4 py-12">
+      <section className="max-w-6xl mx-auto px-8 py-12">
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="bg-[#112240] rounded-2xl shadow-lg p-8 mb-12 border border-[#1d2d50] relative overflow-hidden"
+          className="bg-gray-900/50 rounded-2xl shadow-lg p-8 mb-12 border border-gray-800 hover:border-green-400 transition-colors duration-300 relative overflow-hidden"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-[#64ffda]/5 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-400/5 to-transparent"></div>
           <div className="relative">
-            <h2 className="text-3xl font-bold text-white mb-6">Our Mission</h2>
+            <h2 className="text-3xl font-bold text-green-400 mb-6">Our Mission</h2>
             <div className="space-y-4 text-gray-300 leading-relaxed">
               <p>
                 Founded in 2014, we've grown from a small team of passionate developers into a full-service
@@ -197,9 +192,9 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="text-center bg-[#112240] rounded-xl p-6 border border-[#1d2d50] hover:border-[#64ffda] transition-colors duration-300"
+              className="text-center bg-gray-900/50 rounded-2xl p-6 border border-gray-800 hover:border-green-400 transition-colors duration-300"
             >
-              <div className="text-4xl text-[#64ffda] mb-4 flex justify-center">
+              <div className="text-4xl text-green-400 mb-4 flex justify-center">
                 {stat.icon}
               </div>
               <div className="text-4xl font-bold text-white mb-2">{stat.number}</div>
@@ -214,9 +209,9 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Our Journey</h2>
+          <h2 className="text-3xl font-bold text-green-400 mb-8 text-center">Our Journey</h2>
           <div className="relative">
-            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#1d2d50] transform -translate-x-1/2"></div>
+            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-800 transform -translate-x-1/2"></div>
             <div className="space-y-12">
               {timeline.map((item, index) => (
                 <motion.div
@@ -231,12 +226,12 @@ const About = () => {
                   <div className={`w-1/2 ${index % 2 === 0 ? 'pr-12' : 'pl-12'}`}>
                     <motion.div
                       whileHover={{ scale: 1.02 }}
-                      className="bg-[#112240] rounded-xl p-6 border border-[#1d2d50] cursor-pointer"
+                      className="bg-gray-900/50 rounded-2xl p-6 border border-gray-800 hover:border-green-400 transition-colors duration-300 cursor-pointer"
                       onClick={() => setActiveTimelineItem(activeTimelineItem === index ? null : index)}
                     >
                       <div className="flex items-center justify-between mb-4">
                         <span className="text-2xl font-bold text-white">{item.year}</span>
-                        <FaChevronRight className={`text-[#8892b0] transform transition-transform duration-300 ${
+                        <FaChevronRight className={`text-gray-400 transform transition-transform duration-300 ${
                           activeTimelineItem === index ? 'rotate-90' : ''
                         }`} />
                       </div>
@@ -254,7 +249,7 @@ const About = () => {
                       </motion.div>
                     </motion.div>
                   </div>
-                  <div className="absolute left-1/2 top-1/2 w-4 h-4 bg-[#64ffda] rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+                  <div className="absolute left-1/2 top-1/2 w-4 h-4 bg-green-400 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
                 </motion.div>
               ))}
             </div>
@@ -267,7 +262,7 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Our Team</h2>
+          <h2 className="text-3xl font-bold text-green-400 mb-8 text-center">Our Team</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
               <motion.div
@@ -275,7 +270,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="group bg-[#112240] rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-[#1d2d50]"
+                className="group bg-gray-900/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-800 hover:border-green-400"
               >
                 <div className="relative">
                   <ImageWithFallback
@@ -293,7 +288,7 @@ const About = () => {
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
-                          className="bg-[#64ffda] text-[#0a192f] p-3 rounded-full"
+                          className="bg-green-400 text-gray-900 p-3 rounded-full hover:bg-green-300 transition-colors duration-300"
                         >
                           {platform === 'linkedin' && <FaLinkedin />}
                           {platform === 'twitter' && <FaTwitter />}
@@ -305,13 +300,13 @@ const About = () => {
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
-                  <div className="text-white font-medium">{member.position}</div>
+                  <div className="text-green-400 font-medium">{member.position}</div>
                   <p className="text-gray-300 mb-4">{member.bio}</p>
                   <div className="flex flex-wrap gap-2">
                     {member.skills.map((skill, idx) => (
                       <span 
                         key={idx}
-                        className="px-3 py-1 rounded-full text-sm bg-[#1d2d50] text-[#64ffda]"
+                        className="px-3 py-1 rounded-full text-sm bg-gray-800 text-green-400"
                       >
                         {skill}
                       </span>
@@ -328,7 +323,7 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Our Values</h2>
+          <h2 className="text-3xl font-bold text-green-400 mb-8 text-center">Our Values</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <motion.div
@@ -336,9 +331,9 @@ const About = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group bg-[#112240] rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-all duration-300 border border-[#1d2d50]"
+                className="group bg-gray-900/50 rounded-2xl shadow-lg p-6 text-center hover:shadow-xl transition-all duration-300 border border-gray-800 hover:border-green-400"
               >
-                <div className={`text-4xl mb-4 flex justify-center bg-gradient-to-r ${value.color} bg-clip-text text-transparent`}>
+                <div className="text-4xl mb-4 flex justify-center text-green-400">
                   {value.icon}
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">{value.title}</h3>

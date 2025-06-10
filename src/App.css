@@ -584,9 +584,14 @@ body, .app {
   }
 
   .why-choose-icon {
-    width: 45px;
-    height: 45px;
-    font-size: 1.8rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  .why-choose-icon svg {
+    width: 20px;
+    height: 20px;
   }
 
   .why-choose-text h3 {
@@ -713,9 +718,14 @@ body, .app {
   }
 
   .why-choose-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+  }
+
+  .why-choose-icon svg {
+    width: 18px;
+    height: 18px;
   }
 
   .why-choose-text h3 {
@@ -1889,19 +1899,20 @@ body, .app {
 }
 
 .why-choose-icon {
-  font-size: 2.5rem;
-  background: linear-gradient(135deg, #00c9ff, #007bff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  flex-shrink: 0;
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 201, 255, 0.1);
+  border-radius: 12px;
+  color: #00c9ff;
+  transition: all 0.3s ease;
+}
+
+.why-choose-item:hover .why-choose-icon {
+  background: rgba(0, 201, 255, 0.2);
+  transform: translateY(-2px);
 }
 
 .why-choose-text {
@@ -1943,9 +1954,14 @@ body, .app {
   }
 
   .why-choose-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  .why-choose-icon svg {
+    width: 20px;
+    height: 20px;
   }
 
   .why-choose-text h3 {

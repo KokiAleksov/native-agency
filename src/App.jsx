@@ -1,17 +1,18 @@
 import { useState, useEffect, useRef } from 'react'
 import { Routes, Route, useNavigate, Link, useLocation } from 'react-router-dom'
+import { FaBullseye, FaGlobe, FaLightbulb, FaHandshake, FaShoppingCart, FaSearch, FaBolt, FaTools } from 'react-icons/fa'
 import './App.css'
 import './styles/StatsCounter.css'
 import './styles/Pages.css'
 import QuoteForm from './components/QuoteForm'
 import StatsCounter from './components/StatsCounter'
 import Services from './pages/Services'
-import CaseStudies from './pages/CaseStudies'
 import About from './pages/About'
-import Footer from './components/Footer'
+import OurProducts from './pages/OurProducts'
 import OurWorkCarousel from './components/OurWorkCarousel'
 import ScrollToTop from './components/ScrollToTop'
 import ProjectDetail from './pages/ProjectDetail'
+import Footer from './components/Footer'
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -50,7 +51,14 @@ function App() {
           if (entry.isIntersecting) {
             const items = entry.target.querySelectorAll('.why-choose-item')
             items.forEach((item) => {
+              item.classList.remove('animate')
+              void item.offsetWidth
               item.classList.add('animate')
+            })
+          } else {
+            const items = entry.target.querySelectorAll('.why-choose-item')
+            items.forEach((item) => {
+              item.classList.remove('animate')
             })
           }
         })
@@ -62,6 +70,11 @@ function App() {
     )
 
     if (whyChooseRef.current) {
+      const items = whyChooseRef.current.querySelectorAll('.why-choose-item')
+      items.forEach((item) => {
+        item.classList.remove('animate')
+      })
+
       observer.observe(whyChooseRef.current)
       const fallbackTimeout = setTimeout(() => {
         const items = whyChooseRef.current.querySelectorAll('.why-choose-item')
@@ -79,7 +92,7 @@ function App() {
         clearTimeout(fallbackTimeout)
       }
     }
-  }, [])
+  }, [location.pathname])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -88,9 +101,16 @@ function App() {
           if (entry.isIntersecting) {
             const items = entry.target.querySelectorAll('.process-step')
             items.forEach((item, index) => {
+              item.classList.remove('animate')
+              void item.offsetWidth
               setTimeout(() => {
                 item.classList.add('animate')
               }, index * 200)
+            })
+          } else {
+            const items = entry.target.querySelectorAll('.process-step')
+            items.forEach((item) => {
+              item.classList.remove('animate')
             })
           }
         })
@@ -102,6 +122,11 @@ function App() {
     )
 
     if (processSectionRef.current) {
+      const items = processSectionRef.current.querySelectorAll('.process-step')
+      items.forEach((item) => {
+        item.classList.remove('animate')
+      })
+
       observer.observe(processSectionRef.current)
       const fallbackTimeout = setTimeout(() => {
         const items = processSectionRef.current.querySelectorAll('.process-step')
@@ -121,13 +146,13 @@ function App() {
         clearTimeout(fallbackTimeout)
       }
     }
-  }, [])
+  }, [location.pathname])
 
   const menuItems = [
     { title: 'Services', link: '/services' },
-    { title: 'Case Studies', link: '/case-studies' },
+    { title: 'Our Products', link: '/products' },
     { title: 'About', link: '/about' },
-    { title: 'Contact', link: '/contact' }
+    { title: 'Contact', link: '/quote' }
   ]
 
   const handleQuoteClick = () => {
@@ -143,74 +168,68 @@ function App() {
 
   const processSteps = [
     {
-      icon: '/images/process-strategy.svg',
       number: '01',
       title: 'Web Strategy',
-      desc: 'We use in-depth research and analysis as key pillars to build a step-by-step plan that expands your digital presence and drives online growth.',
+      desc: 'We craft data-driven strategies that transform your digital presence. Through comprehensive research and analysis, we build a clear roadmap for your online success.',
       bullets: [
-        'Identify your target audiences',
-        'Analyze user pain-points & define your UVPs',
-        'Define key performance indicators (KPIs)',
-        'Create a roadmap to growing your brand online',
+        { text: 'Identify and understand your target audience segments' },
+        { text: 'Analyze user pain points and define unique value propositions' },
+        { text: 'Establish clear KPIs to measure success' },
+        { text: 'Create a strategic roadmap for sustainable growth' }
       ],
     },
     {
-      icon: '/images/process-architecture.svg',
       number: '02',
       title: 'Planning & Information Architecture',
-      desc: 'We utilize proven techniques to map your content, meet user intentions and create an engaging user experience. We ensure seamless user journeys to key conversion points.',
+      desc: 'We design intuitive user journeys that convert. Our structured approach ensures your content is organized for maximum engagement and seamless user experience.',
       bullets: [
-        'Develop a base-level user flow & sitemap',
-        'Utilize wireframing to create a seamless conversion funnel',
-        'Add on-brand, consistent messaging to your structure',
+        { text: 'Map user flows and create a strategic sitemap' },
+        { text: 'Design conversion-focused wireframes' },
+        { text: 'Develop consistent, on-brand messaging architecture' }
       ],
     },
     {
-      icon: '/images/process-design.svg',
       number: '03',
       title: 'Creative Design',
-      desc: 'This stage is where you will see your site come to life. Our award-winning designers implement your unique branding elements to add your identity to your custom web design.',
+      desc: 'We bring your brand to life through stunning, purposeful design. Our award-winning team creates visually compelling experiences that engage and convert.',
       bullets: [
-        'Thoughtfully place design features to guide the user journey',
-        'Utilize interactive videos & animations',
-        'Create custom, branded illustrations',
-        'Ensure accessibility & search engine optimization',
+        { text: 'Design intuitive user interfaces that guide conversions' },
+        { text: 'Create engaging interactive elements and animations' },
+        { text: 'Develop custom illustrations that reflect your brand' },
+        { text: 'Implement SEO and accessibility best practices' }
       ],
     },
     {
-      icon: '/images/process-dev.svg',
       number: '04',
       title: 'Responsive Development',
-      desc: 'A responsive website is fast, accessible and easy to navigate. It automatically scales to various screen sizes and devices, driving user experience and climbing search engine rankings.',
+      desc: 'We build fast, flexible websites that perform across all devices. Our development approach prioritizes speed, accessibility, and search engine visibility.',
       bullets: [
-        'Gather touchpoint & user-channel insights',
-        'Transform your wireframes into a flexible UI',
-        'Test across devices before approval & launch',
+        { text: 'Analyze user behavior across different channels' },
+        { text: 'Develop responsive, performance-optimized interfaces' },
+        { text: 'Conduct thorough cross-device testing' }
       ],
     },
     {
-      icon: '/images/process-qa.svg',
       number: '05',
       title: 'Quality Assurance (QA)',
-      desc: 'We pride ourselves on delivering measurable results and professional outcomes. We guarantee a high-quality digital experience for your brand.',
+      desc: 'We ensure excellence in every detail. Our rigorous QA process guarantees a flawless digital experience that meets the highest standards.',
       bullets: [
-        'Actively involve our clients throughout every project',
-        'Meticulously test all designs to catch errors',
-        'Use tried-and-tested tools to secure before launch',
+        { text: 'Maintain transparent client communication throughout' },
+        { text: 'Conduct comprehensive design and functionality testing' },
+        { text: 'Implement robust security measures and protocols' }
       ],
     },
     {
-      icon: '/images/process-launch.svg',
       number: '06',
       title: 'Launch & Optimization',
-      desc: 'Our end-to-end website design services cover both launch and post-launch support. We monitor, test and optimize your website elements to ensure every part of your site is functioning optimally.',
+      desc: 'We don\'t just launch websites - we launch success stories. Our comprehensive support ensures your site performs optimally from day one and continues to grow.',
       bullets: [
-        'Follow a strict protocol for every website launch',
-        'Offer post-launch maintenance & optimization',
-        'Implement a digital marketing plan to drive awareness',
+        { text: 'Execute a proven launch protocol' },
+        { text: 'Provide ongoing maintenance and performance optimization' },
+        { text: 'Develop and implement growth-focused marketing strategies' }
       ],
     },
-  ];
+  ]
 
   return (
     <div className="app main-bg min-h-screen flex flex-col">
@@ -256,7 +275,7 @@ function App() {
       <Routes>
         <Route path="/quote" element={<QuoteForm />} />
         <Route path="/services" element={<Services />} />
-        <Route path="/case-studies" element={<CaseStudies />} />
+        <Route path="/products" element={<OurProducts />} />
         <Route path="/about" element={<About />} />
         <Route path="/project/:projectId" element={<ProjectDetail />} />
         <Route path="/" element={
@@ -426,12 +445,7 @@ function App() {
                   </p>
                 </div>
                 <div className="agency-right">
-                  <img src="/images/award-trophy.png" alt="Award Trophy" className="agency-trophy" />
-                  <div className="agency-mockups">
-                    <img src="/images/agency-mockup1.jpg" alt="Mockup 1" className="agency-mockup" />
-                    <img src="/images/agency-mockup2.jpg" alt="Mockup 2" className="agency-mockup" />
-                    <img src="/images/agency-mockup3.jpg" alt="Mockup 3" className="agency-mockup" />
-                  </div>
+                  <img src="/images/web-development-team-collaboration-illustration-yz5n469ruq1f8yb9-yz5n469ruq1f8yb9.png" alt="Web Development Team Collaboration Illustration" className="agency-banner" />
                 </div>
               </div>
             </section>
@@ -449,13 +463,14 @@ function App() {
                   <div className="process-step" key={step.number}>
                     <div className="process-step-header">
                       <span className="process-step-number">{step.number}</span>
-                      <img src={step.icon} alt="" className="process-step-icon" />
                       <h3>{step.title}</h3>
                     </div>
                     <p className="process-step-desc">{step.desc}</p>
                     <ul className="process-step-bullets">
-                      {step.bullets.map((bullet, i) => (
-                        <li key={i}>{bullet}</li>
+                      {step.bullets.map((bullet, index) => (
+                        <li key={index} className="process-bullet-item">
+                          {bullet.text}
+                        </li>
                       ))}
                     </ul>
                   </div>
@@ -475,7 +490,9 @@ function App() {
               </div>
               <div className="why-choose-content">
                 <div className="why-choose-item">
-                  <div className="why-choose-icon">🎯</div>
+                  <div className="why-choose-icon">
+                    <FaBullseye className="text-2xl" />
+                  </div>
                   <div className="why-choose-text">
                     <h3>Have A Clear Web Strategy</h3>
                     <p>Before launching your digital presence, having a well-defined plan is crucial. Our experts conduct thorough research on your industry, competitors, and target market to develop a tailored digital strategy that aligns with your goals.</p>
@@ -483,7 +500,9 @@ function App() {
                 </div>
 
                 <div className="why-choose-item">
-                  <div className="why-choose-icon">🌐</div>
+                  <div className="why-choose-icon">
+                    <FaGlobe className="text-2xl" />
+                  </div>
                   <div className="why-choose-text">
                     <h3>Build A Strong Online Presence</h3>
                     <p>Establishing a strong and professional online presence positions you as a leader in your industry. We've successfully guided numerous clients in building their online authority and are ready to help you achieve the same.</p>
@@ -491,7 +510,9 @@ function App() {
                 </div>
 
                 <div className="why-choose-item">
-                  <div className="why-choose-icon">💡</div>
+                  <div className="why-choose-icon">
+                    <FaLightbulb className="text-2xl" />
+                  </div>
                   <div className="why-choose-text">
                     <h3>Boost Conversion Rates</h3>
                     <p>Our expert website designers focus on optimizing your website for an exceptional user experience, transforming visitors into loyal customers. We ensure your site is designed to engage and convert, driving higher conversion rates.</p>
@@ -499,7 +520,9 @@ function App() {
                 </div>
 
                 <div className="why-choose-item">
-                  <div className="why-choose-icon">🤝</div>
+                  <div className="why-choose-icon">
+                    <FaHandshake className="text-2xl" />
+                  </div>
                   <div className="why-choose-text">
                     <h3>Increase User Engagement</h3>
                     <p>Professional website design keeps visitors on your site longer, reducing bounce rates. Our designers create intuitive, easy-to-navigate websites that enhance user engagement and improve conversion rates.</p>
@@ -507,7 +530,9 @@ function App() {
                 </div>
 
                 <div className="why-choose-item">
-                  <div className="why-choose-icon">🛍️</div>
+                  <div className="why-choose-icon">
+                    <FaShoppingCart className="text-2xl" />
+                  </div>
                   <div className="why-choose-text">
                     <h3>Custom eCommerce Design</h3>
                     <p>Our award-winning designers craft e-Stores with user interfaces that captivate your customers and maximize your revenue. We ensure your online store not only attracts but retains customers effectively.</p>
@@ -515,7 +540,9 @@ function App() {
                 </div>
 
                 <div className="why-choose-item">
-                  <div className="why-choose-icon">🔍</div>
+                  <div className="why-choose-icon">
+                    <FaSearch className="text-2xl" />
+                  </div>
                   <div className="why-choose-text">
                     <h3>Search Engine Optimization</h3>
                     <p>We implement proven SEO strategies to enhance your website's search engine ranking and drive organic traffic, helping you reach a broader audience.</p>
@@ -523,7 +550,9 @@ function App() {
                 </div>
 
                 <div className="why-choose-item">
-                  <div className="why-choose-icon">⚡</div>
+                  <div className="why-choose-icon">
+                    <FaBolt className="text-2xl" />
+                  </div>
                   <div className="why-choose-text">
                     <h3>Optimize Load Times</h3>
                     <p>Our experts optimize your website's load times, ensuring fast performance that keeps visitors engaged and boosts your conversion rates.</p>
@@ -531,7 +560,9 @@ function App() {
                 </div>
 
                 <div className="why-choose-item">
-                  <div className="why-choose-icon">🛠️</div>
+                  <div className="why-choose-icon">
+                    <FaTools className="text-2xl" />
+                  </div>
                   <div className="why-choose-text">
                     <h3>Ongoing Support</h3>
                     <p>With professional website design services, you benefit from continuous support and maintenance. Our team is committed to ensuring your website remains optimized and performs at its best long after launch.</p>
@@ -542,6 +573,7 @@ function App() {
           </>
         } />
       </Routes>
+
       <Footer />
     </div>
   )
