@@ -388,34 +388,21 @@ function App() {
                   <div className="partners-track">
                     {/* First set */}
                     <img src="/images/logo/disney-logo-png_seeklogo-41972.png" alt="Disney" className="partner-logo" />
-                    <img src="/images/logo/images.jpeg" alt="Partner 2" className="partner-logo" />
                     <img src="/images/logo/Wolt-Logo.png" alt="Wolt" className="partner-logo" />
-                    <img src="/images/partner-nokia.svg" alt="Nokia" className="partner-logo" />
-                    <img src="/images/partner-bumble.svg" alt="Bumble" className="partner-logo" />
-                    <img src="/images/partner-schibsted.svg" alt="Schibsted" className="partner-logo" />
-                    <img src="/images/partner-opera.svg" alt="Opera" className="partner-logo" />
-                    <img src="/images/partner-bonterra.svg" alt="Bonterra" className="partner-logo" />
-                    <img src="/images/partner-zoom.svg" alt="Zoom" className="partner-logo" />
+                    <img src="/images/logo/bumble.png" alt="Bumble" className="partner-logo" />
+                    <img src="/images/logo/booking.png" alt="Booking" className="partner-logo" />
+                    <img src="/images/logo/opera.png" alt="Opera" className="partner-logo" />
                     {/* Second set */}
                     <img src="/images/logo/disney-logo-png_seeklogo-41972.png" alt="Disney" className="partner-logo" />
-                    <img src="/images/logo/images.jpeg" alt="Partner 2" className="partner-logo" />
                     <img src="/images/logo/Wolt-Logo.png" alt="Wolt" className="partner-logo" />
-                    <img src="/images/partner-nokia.svg" alt="Nokia" className="partner-logo" />
-                    <img src="/images/partner-bumble.svg" alt="Bumble" className="partner-logo" />
-                    <img src="/images/partner-schibsted.svg" alt="Schibsted" className="partner-logo" />
-                    <img src="/images/partner-opera.svg" alt="Opera" className="partner-logo" />
-                    <img src="/images/partner-bonterra.svg" alt="Bonterra" className="partner-logo" />
-                    <img src="/images/partner-zoom.svg" alt="Zoom" className="partner-logo" />
+                    <img src="/images/logo/bumble.png" alt="Bumble" className="partner-logo" />
+                    <img src="/images/logo/opera.png" alt="Opera" className="partner-logo" />
+                    <img src="/images/logo/booking.png" alt="Booking" className="partner-logo" />
                     {/* Third set */}
-                    <img src="/images/logo/disney-logo-png_seeklogo-41972.png" alt="Disney" className="partner-logo" />
-                    <img src="/images/logo/images.jpeg" alt="Partner 2" className="partner-logo" />
                     <img src="/images/logo/Wolt-Logo.png" alt="Wolt" className="partner-logo" />
-                    <img src="/images/partner-nokia.svg" alt="Nokia" className="partner-logo" />
-                    <img src="/images/partner-bumble.svg" alt="Bumble" className="partner-logo" />
-                    <img src="/images/partner-schibsted.svg" alt="Schibsted" className="partner-logo" />
-                    <img src="/images/partner-opera.svg" alt="Opera" className="partner-logo" />
-                    <img src="/images/partner-bonterra.svg" alt="Bonterra" className="partner-logo" />
-                    <img src="/images/partner-zoom.svg" alt="Zoom" className="partner-logo" />
+                    <img src="/images/logo/bumble.png" alt="Bumble" className="partner-logo" />
+                    <img src="/images/logo/booking.png" alt="Booking" className="partner-logo" />
+                    <img src="/images/logo/opera.png" alt="Opera" className="partner-logo" />
                   </div>
                 </div>
               </div>
