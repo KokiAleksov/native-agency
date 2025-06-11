@@ -441,7 +441,7 @@ function App() {
                     <li><span className="checkmark">✔</span> Tailored Branding Strategies <span className="highlight">To Drive Engagement</span></li>
                   </ul>
                   <p className="agency-desc">
-                    Digital Silk is a web design company & digital marketing agency focused on growing brands online. We create effective brand strategies, custom web design, development, and digital marketing solutions to generate greater brand engagement and conversions. We work closely with our clients to ensure each project meets their brand guidelines and business goals and provide technical and marketing expertise to ensure optimal results.
+                    Native Agency is a web design company & digital marketing agency focused on growing brands online. We create effective brand strategies, custom web design, development, and digital marketing solutions to generate greater brand engagement and conversions. We work closely with our clients to ensure each project meets their brand guidelines and business goals and provide technical and marketing expertise to ensure optimal results.
                   </p>
                 </div>
                 <div className="agency-right">
