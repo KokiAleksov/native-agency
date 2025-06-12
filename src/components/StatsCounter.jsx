@@ -36,7 +36,7 @@ const StatsCounter = () => {
     const stepDuration = duration / steps;
 
     const targetValues = {
-      projects: 500,
+      projects: 140,
       satisfaction: 98,
       years: 15,
       clients: 1000

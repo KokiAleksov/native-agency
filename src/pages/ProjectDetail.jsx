@@ -155,14 +155,6 @@ const ProjectDetail = () => {
               <div className="text-white font-semibold">{project.year}</div>
             </div>
           </div>
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block mt-2 px-8 py-3 rounded-full bg-green-400 text-gray-900 font-extrabold text-lg shadow-lg hover:bg-green-300 transition-all duration-200"
-          >
-            Visit Live Site
-          </a>
         </div>
         <div className="flex-1 flex flex-col items-center justify-center -mt-16">
           <div className="relative w-full max-w-3xl">
@@ -173,46 +165,14 @@ const ProjectDetail = () => {
                 alt={`${project.title} - View ${currentImageIndex + 1}`}
                 className="w-full h-full object-cover"
               />
-              
-              {/* Navigation Buttons */}
-              <button
-                onClick={prevImage}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300"
-              >
-                ←
-              </button>
-              <button
-                onClick={nextImage}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300"
-              >
-                →
-              </button>
+
 
               {/* Image Counter */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm">
-                {currentImageIndex + 1} / {project.images.length}
-              </div>
+
             </div>
 
             {/* Thumbnail Navigation */}
             <div className="flex gap-4 mt-4 justify-center">
-              {project.images.map((image, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentImageIndex(index)}
-                  className={`w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
-                    currentImageIndex === index
-                      ? 'border-green-400 scale-110'
-                      : 'border-gray-700 hover:border-gray-500'
-                  }`}
-                >
-                  <img
-                    src={image}
-                    alt={`Thumbnail ${index + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                </button>
-              ))}
             </div>
           </div>
         </div>

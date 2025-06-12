@@ -52,8 +52,8 @@ const About = () => {
 
   const stats = [
     { number: '10+', label: 'Years Experience', icon: <FaAward /> },
-    { number: '200+', label: 'Projects Completed', icon: <FaHandshake /> },
-    { number: '50+', label: 'Team Members', icon: <FaHeart /> },
+    { number: '140+', label: 'Projects Completed', icon: <FaHandshake /> },
+    { number: '10+', label: 'Team Members', icon: <FaHeart /> },
     { number: '15+', label: 'Industry Awards', icon: <FaLightbulb /> }
   ];
 
