@@ -61,11 +61,13 @@
   text-decoration: none;
   color: inherit;
   background: transparent;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease;
   height: 100%;
   position: relative;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .work-card:hover {
@@ -77,7 +79,7 @@
   width: 100%;
   padding-top: 66.67%; /* 3:2 aspect ratio */
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 12px;
   box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
 }
 
@@ -130,7 +132,7 @@
 }
 
 .work-card-title {
-  padding: 1.5rem 0;
+  padding: 1.25rem 0;
   font-size: 1.25rem;
   font-weight: 600;
   color: #fff;
@@ -245,14 +247,6 @@
   .our-work-swiper-container {
     padding: 0 50px;
   }
-
-  .work-card {
-    min-height: 260px;
-  }
-
-  .work-card-img {
-    height: 200px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -269,17 +263,8 @@
     font-size: 1rem;
   }
 
-  .work-card-title {
-    padding: 1rem 0;
-    font-size: 1.1rem;
-  }
-
   .our-work-swiper-container {
     padding: 0 30px;
-  }
-
-  .work-card-image-container {
-    box-shadow: 0 8px 20px -10px rgba(2, 12, 27, 0.6);
   }
 }
 
@@ -298,27 +283,8 @@
     padding: 0 6px;
   }
 
-  .work-card {
-    min-height: 180px;
-    border-radius: 10px;
-  }
-
-  .work-card-img {
-    height: 120px;
-    border-radius: 10px 10px 0 0;
-  }
-
-  .work-card-title {
-    padding: 0.75rem 0;
-    font-size: 1rem;
-  }
-
-  .work-card-image-container {
-    box-shadow: 0 6px 15px -8px rgba(2, 12, 27, 0.5);
-  }
-
   .our-work-swiper-container {
-    padding: 0 10px;
+    padding: 0 20px;
   }
 }
 
@@ -417,5 +383,89 @@
 
   .work-card:active .work-card-overlay {
     opacity: 1;
+  }
+}
+
+/* Remove old card-specific responsive styles */
+@media (max-width: 1200px) {
+  .work-card {
+    min-height: unset;
+  }
+
+  .work-card-img {
+    height: unset;
+  }
+}
+
+@media (max-width: 768px) {
+  .work-card-title {
+    padding: 1.25rem 0;
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .work-card {
+    min-height: unset;
+    border-radius: 12px;
+  }
+
+  .work-card-img {
+    height: unset;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .work-card-title {
+    padding: 1.25rem 0;
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .work-card {
+    min-height: unset;
+    border-radius: 12px;
+  }
+
+  .work-card-img {
+    height: unset;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .work-card-title {
+    padding: 1.25rem 0;
+    font-size: 1.25rem;
+  }
+}
+
+/* Fix for landscape orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+  .work-card {
+    min-height: unset;
+  }
+
+  .work-card-img {
+    height: unset;
+  }
+
+  .work-card-title {
+    padding: 1.25rem 0;
+    font-size: 1.25rem;
+  }
+}
+
+/* Fix for very small screens in landscape */
+@media (max-width: 700px) and (orientation: landscape) {
+  .work-card {
+    min-height: unset;
+  }
+
+  .work-card-img {
+    height: unset;
+  }
+
+  .work-card-title {
+    padding: 1.25rem 0;
+    font-size: 1.25rem;
   }
 } 

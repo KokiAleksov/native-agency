@@ -361,7 +361,7 @@ body, .app {
 
 @media (max-width: 900px) {
   .hero-bg-slider {
-    top: 110px;
+    top: 220px;
   }
   .mockup-slide {
     width: 260px;
@@ -376,7 +376,7 @@ body, .app {
 
 @media (max-width: 600px) {
   .hero-bg-slider {
-    top: 70px;
+    top: 180px;
   }
   .mockup-slide {
     width: 170px;
@@ -439,8 +439,7 @@ body, .app {
   }
 
   .quote-btn {
-    padding: 0.75rem 1.25rem;
-    font-size: 0.9rem;
+    display: none;
   }
 
   .menu-icon {
@@ -1803,7 +1802,7 @@ body, .app {
 }
 
 .hero-bg-slider.reverse {
-  top: 320px;
+  top: 340px;
 }
 
 .mockup-track.reverse {
@@ -1817,13 +1816,13 @@ body, .app {
 
 @media (max-width: 900px) {
   .hero-bg-slider.reverse {
-    top: 200px;
+    top: 340px;
   }
 }
 
 @media (max-width: 600px) {
   .hero-bg-slider.reverse {
-    top: 130px;
+    top: 300px;
   }
 }
 
@@ -2336,6 +2335,58 @@ body, .app {
 
 .divider-text::after {
   right: -5px;
+}
+
+@media (max-width: 768px) {
+  .section-divider {
+    padding: 40px 0;
+  }
+
+  .divider-line {
+    margin: 0 10px;
+  }
+
+  .divider-content {
+    padding: 0 20px;
+  }
+
+  .divider-text {
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+    padding: 0 12px;
+  }
+
+  .divider-text::before,
+  .divider-text::after {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-divider {
+    padding: 30px 0;
+  }
+
+  .divider-line {
+    margin: 0 8px;
+  }
+
+  .divider-content {
+    padding: 0 15px;
+  }
+
+  .divider-text {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    padding: 0 10px;
+  }
+
+  .divider-text::before,
+  .divider-text::after {
+    width: 5px;
+    height: 5px;
+  }
 }
 
 

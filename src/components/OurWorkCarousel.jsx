@@ -58,7 +58,7 @@ const OurWorkCarousel = () => {
           ref={swiperRef}
           modules={[Pagination]}
           spaceBetween={30}
-          slidesPerView={3}
+          slidesPerView={1}
           loop={true}
           pagination={{ 
             clickable: true, 
@@ -66,9 +66,14 @@ const OurWorkCarousel = () => {
           }}
           className="our-work-swiper"
           breakpoints={{
-            320: { slidesPerView: 1 },
-            640: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
+            640: { 
+              slidesPerView: 2,
+              spaceBetween: 20
+            },
+            1024: { 
+              slidesPerView: 3,
+              spaceBetween: 30
+            }
           }}
         >
           {projects.map((project) => (

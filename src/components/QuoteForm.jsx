@@ -8,14 +8,17 @@ const QuoteForm = () => {
     email: '',
     company: '',
     phone: '',
-    budget: '',
-    timeline: '',
-    message: '',
-    service: 'web-design'
+    message: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+
+  // Get the API URL based on environment
+  const API_URL = import.meta.env.PROD 
+    ? 'https://nativeagency.info/api/send-quote'  // Production URL
+    : 'http://localhost:3001/api/send-quote';     // Development URL
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,26 +31,40 @@ const QuoteForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError('');
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setSubmitSuccess(true);
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setSubmitSuccess(false);
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        phone: '',
-        budget: '',
-        timeline: '',
-        message: '',
-        service: 'web-design'
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-    }, 3000);
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      setSubmitSuccess(true);
+      
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setSubmitSuccess(false);
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          phone: '',
+          message: ''
+        });
+      }, 3000);
+    } catch (error) {
+      console.error('Error:', error);
+      setSubmitError('Failed to send message. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -147,7 +164,7 @@ const QuoteForm = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-green-400 transition-colors duration-300"
+                    className="w-full px-4 py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-black placeholder-gray-400 focus:outline-none focus:border-green-400 transition-colors duration-300"
                     placeholder="Your name"
                   />
                 </div>
@@ -160,7 +177,7 @@ const QuoteForm = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-green-400 transition-colors duration-300"
+                    className="w-full px-4 py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-black placeholder-gray-400 focus:outline-none focus:border-green-400 transition-colors duration-300"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -175,7 +192,7 @@ const QuoteForm = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-green-400 transition-colors duration-300"
+                    className="w-full px-4 py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-black placeholder-gray-400 focus:outline-none focus:border-green-400 transition-colors duration-300"
                     placeholder="Your company"
                   />
                 </div>
@@ -187,62 +204,10 @@ const QuoteForm = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-green-400 transition-colors duration-300"
+                    className="w-full px-4 py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-black placeholder-gray-400 focus:outline-none focus:border-green-400 transition-colors duration-300"
                     placeholder="Your phone number"
                   />
                 </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="budget" className="block text-sm font-medium text-gray-300 mb-2">Budget Range</label>
-                  <select
-                    id="budget"
-                    name="budget"
-                    value={formData.budget}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-white focus:outline-none focus:border-green-400 transition-colors duration-300"
-                  >
-                    <option value="">Select budget range</option>
-                    <option value="5k-10k">$5,000 - $10,000</option>
-                    <option value="10k-25k">$10,000 - $25,000</option>
-                    <option value="25k-50k">$25,000 - $50,000</option>
-                    <option value="50k+">$50,000+</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="timeline" className="block text-sm font-medium text-gray-300 mb-2">Timeline</label>
-                  <select
-                    id="timeline"
-                    name="timeline"
-                    value={formData.timeline}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-white focus:outline-none focus:border-green-400 transition-colors duration-300"
-                  >
-                    <option value="">Select timeline</option>
-                    <option value="asap">As soon as possible</option>
-                    <option value="1-3months">1-3 months</option>
-                    <option value="3-6months">3-6 months</option>
-                    <option value="6+months">6+ months</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="service" className="block text-sm font-medium text-gray-300 mb-2">Service Interested In</label>
-                <select
-                  id="service"
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-white focus:outline-none focus:border-green-400 transition-colors duration-300"
-                >
-                  <option value="web-design">Web Design & Development</option>
-                  <option value="digital-marketing">Digital Marketing</option>
-                  <option value="brand-strategy">Brand Strategy</option>
-                  <option value="ecommerce">E-commerce Solutions</option>
-                  <option value="other">Other</option>
-                </select>
               </div>
 
               <div>
@@ -253,7 +218,7 @@ const QuoteForm = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows="4"
-                  className="w-full px-4 py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:border-green-400 transition-colors duration-300"
+                  className="w-full px-4 py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-black placeholder-gray-400 focus:outline-none focus:border-green-400 transition-colors duration-300"
                   placeholder="Tell us about your project..."
                 ></textarea>
               </div>
@@ -285,6 +250,17 @@ const QuoteForm = () => {
                   </>
                 )}
               </motion.button>
+              
+              {submitError && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg"
+                >
+                  <p className="font-semibold">Error:</p>
+                  <p className="mt-1">{submitError}</p>
+                </motion.div>
+              )}
             </form>
           </motion.div>
         </div>

@@ -196,21 +196,23 @@ const ProjectDetail = () => {
               <div
                 key={id}
                 onClick={() => navigate(`/project/${id}`)}
-                className="group cursor-pointer bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700 hover:border-green-400/50 transition-all duration-300"
+                className="group cursor-pointer bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700 hover:border-green-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-green-400/20 flex flex-col h-full"
               >
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative aspect-[16/9] overflow-hidden flex-shrink-0">
                   <img
                     src={project.images[0]}
                     alt={project.title}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <h4 className="text-xl font-bold mb-2 text-white group-hover:text-green-400 transition-colors duration-300">
+                      {project.title}
+                    </h4>
+                    <p className="text-gray-200 text-sm">{project.subtitle}</p>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h4 className="text-xl font-bold mb-2 group-hover:text-green-400 transition-colors duration-300">
-                    {project.title}
-                  </h4>
-                  <p className="text-gray-400 text-sm mb-4">{project.subtitle}</p>
+                <div className="p-6 flex-grow">
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.slice(0, 3).map((tech, idx) => (
                       <span

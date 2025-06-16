@@ -120,11 +120,6 @@ const Footer = () => {
             <div className="text-white/40 text-xs sm:text-sm text-center sm:text-left">
               <p>© {currentYear} NΛTIVE. All rights reserved.</p>
             </div>
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm">
-              <Link to="/privacy" className="text-white/40 hover:text-[#00c9ff] transition-colors">Privacy Policy</Link>
-              <Link to="/terms" className="text-white/40 hover:text-[#00c9ff] transition-colors">Terms of Service</Link>
-              <Link to="/cookies" className="text-white/40 hover:text-[#00c9ff] transition-colors">Cookie Policy</Link>
-            </div>
           </div>
         </div>
       </div>
