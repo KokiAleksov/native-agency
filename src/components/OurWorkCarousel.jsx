@@ -9,24 +9,24 @@ import './OurWorkCarousel.css';
 
 const projects = [
   {
-    id: 'zinio-office',
-    image: '/images/Screenshot 2025-06-05 120402.png',
-    title: 'Zinio Office',
+    id: 'cult-fit',
+    image: '/images/Screenshot 2025-06-26 131758.png',
+    title: 'Cult Fit',
   },
   {
-    id: 'tourism-malaysia',
-    image: '/images/dynamic-website-examples.jpg',
-    title: 'Tourism Malaysia',
+    id: 'pearl-dental',
+    image: '/images/Screenshot 2025-06-26 133422.png',
+    title: 'Pearl Dental',
   },
   {
-    id: 'truman',
-    image: '/images/braintech.webp',
-    title: 'Truman',
+    id: 'bos-coffee',
+    image: '/images/bos.png',
+    title: 'Bo\'s Coffee',
   },
   {
-    id: 'sky-garden',
-    image: '/images/sky.garden.jpg',
-    title: 'Sky Garden',
+    id: 'plumber',
+    image: '/images/plumber.png',
+    title: 'UNC LOG Plumber',
   },
 ];
 
