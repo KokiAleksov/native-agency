@@ -36,14 +36,6 @@ const products = [
     technologies: ['React', 'Firebase', 'Stripe']
   },
   {
-    id: 'edu-platform',
-    title: 'EduPlatform',
-    category: 'Education',
-    image: '/images/edu.png',
-    description: 'Interactive learning management system with real-time collaboration.',
-    technologies: ['React', 'Firebase', 'WebRTC']
-  },
-  {
     id: 'food-delivery',
     title: 'FoodExpress',
     category: 'Food & Delivery',
@@ -82,14 +74,6 @@ const products = [
     image: '/images/event.png',
     description: 'Comprehensive event planning and management platform.',
     technologies: ['React', 'Firebase', 'FullCalendar']
-  },
-  {
-    id: 'job-portal',
-    title: 'JobMatch',
-    category: 'Employment',
-    image: '/images/job.png',
-    description: 'AI-powered job matching and recruitment platform.',
-    technologies: ['React', 'Firebase', 'TensorFlow.js']
   },
   {
     id: 'travel-planner',

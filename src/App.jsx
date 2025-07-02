@@ -413,7 +413,7 @@ function App() {
             <div className="section-divider">
               <div className="divider-line"></div>
               <div className="divider-content">
-                <span className="divider-text">Crafting Digital Excellence</span>
+                <span className="divider-text">Redefining Excellence in the Digital Era</span>
               </div>
               <div className="divider-line"></div>
             </div>
@@ -425,7 +425,7 @@ function App() {
                   <ul className="agency-features">
                     <li><span className="checkmark">✔</span> Custom Web Design Solutions <span className="highlight">To Drive Conversions</span></li>
                     <li><span className="checkmark">✔</span> Effective Marketing Campaigns <span className="highlight">To Generate Growth</span></li>
-                    <li><span className="checkmark">✔</span> Tailored Branding Strategies <span className="highlight">To Drive Engagement</span></li>
+                    <li><span className="checkmark">✔</span> Tailored Branding Strategies <span className="highlight">To Optimize Audience Interaction</span></li>
                   </ul>
                   <p className="agency-desc">
                     Native Agency is a web design company & digital marketing agency focused on growing brands online. We create effective brand strategies, custom web design, development, and digital marketing solutions to generate greater brand engagement and conversions. We work closely with our clients to ensure each project meets their brand guidelines and business goals and provide technical and marketing expertise to ensure optimal results.
