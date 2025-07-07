@@ -10,30 +10,22 @@ const About = () => {
 
   const teamMembers = [
     {
-      name: 'John Smith',
-      position: 'Creative Director',
-      image: 'https://placehold.co/400x400/112240/64ffda?text=JS',
-      bio: '10+ years of experience in digital design and creative direction.',
-      longBio: 'John leads our creative team with a passion for innovative design solutions. With over a decade of experience, he has helped numerous brands establish their digital presence and achieve their goals.',
-      social: {
-        linkedin: 'https://linkedin.com/in/johnsmith',
-        twitter: 'https://twitter.com/johnsmith',
-        github: 'https://github.com/johnsmith'
-      },
-      skills: ['UI/UX Design', 'Brand Strategy', 'Creative Direction']
+      name: 'Jovan Pendev',
+      position: 'Co-Founder & Creative Director',
+      image: 'https://placehold.co/400x400/112240/64ffda?text=JP',
+      bio: 'Visionary creative director with expertise in brand development and digital innovation.',
+      longBio: 'Jovan co-founded our agency with a passion for creating meaningful digital experiences. With extensive experience in creative direction, he leads our design team in developing innovative solutions that connect brands with their audiences.',
+      social: {},
+      skills: ['Creative Direction', 'Brand Strategy', 'UI/UX Design', 'Visual Identity', 'Design Systems', 'User Research', 'Prototyping', 'Design Leadership']
     },
     {
-      name: 'Sarah Johnson',
-      position: 'Lead Developer',
-      image: 'https://placehold.co/400x400/112240/64ffda?text=SJ',
-      bio: 'Expert in full-stack development and emerging technologies.',
-      longBio: 'Sarah brings extensive experience in modern web technologies and leads our development team in creating robust and scalable solutions.',
-      social: {
-        linkedin: 'https://linkedin.com/in/sarahjohnson',
-        twitter: 'https://twitter.com/sarahjohnson',
-        github: 'https://github.com/sarahjohnson'
-      },
-      skills: ['Full Stack', 'React', 'Node.js']
+      name: 'Nikola Aleksov',
+      position: 'Co-Founder & Lead Developer',
+      image: 'https://placehold.co/400x400/112240/64ffda?text=NA',
+      bio: 'Technical architect specializing in scalable web applications and emerging technologies.',
+      longBio: 'Nikola brings deep technical expertise to our agency as co-founder and lead developer. He architects robust, scalable solutions and leads our development team in implementing cutting-edge technologies.',
+      social: {},
+      skills: ['Full Stack Development', 'React/Next.js', 'Node.js/Express', 'Python/Django', 'Database Design', 'API Architecture', 'DevOps', 'Cloud Infrastructure', 'Performance Optimization']
     },
     {
       name: 'Michael Chen',
@@ -41,11 +33,7 @@ const About = () => {
       image: 'https://placehold.co/400x400/112240/64ffda?text=MC',
       bio: 'Specializes in digital marketing and growth strategies.',
       longBio: 'Michael combines data-driven insights with creative thinking to develop effective digital strategies that drive business growth.',
-      social: {
-        linkedin: 'https://linkedin.com/in/michaelchen',
-        twitter: 'https://twitter.com/michaelchen',
-        github: 'https://github.com/michaelchen'
-      },
+      social: {},
       skills: ['Digital Marketing', 'Analytics', 'Strategy']
     }
   ];

@@ -29,9 +29,15 @@ try {
 // Load environment variables
 dotenv.config();
 
+// Email configuration from environment variables
+const EMAIL_FROM = process.env.EMAIL_FROM || 'shoferps@gmail.com';
+const EMAIL_TO = process.env.EMAIL_TO || 'shoferps@gmail.com';
+
 // Verify environment variables
 console.log('Environment variables loaded:', {
   EMAIL_PASSWORD: process.env.EMAIL_PASSWORD ? 'Password is set' : 'Password is missing',
+  EMAIL_FROM: EMAIL_FROM,
+  EMAIL_TO: EMAIL_TO,
   PORT: process.env.PORT || 'Using default port 3001'
 });
 
@@ -41,20 +47,30 @@ if (!process.env.EMAIL_PASSWORD) {
 }
 
 const app = express();
-app.use(cors());
+
+// Configure CORS for production
+const corsOptions = {
+  origin: process.env.NODE_ENV === 'production' 
+    ? 'https://nativeagency.info'  // Only allow requests from your domain in production
+    : 'http://localhost:5173',     // Allow localhost in development
+  methods: ['POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type']
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
-// Create a transporter using Zoho Mail EU SMTP with SSL
+// Create a transporter using Zoho Mail EU SMTP
 const transporter = nodemailer.createTransport({
   host: 'smtp.zoho.eu',
   port: 465,
   secure: true,
   auth: {
-    user: 'offers@nativeagency.info',
+    user: EMAIL_FROM,
     pass: process.env.EMAIL_PASSWORD
   },
   tls: {
-    rejectUnauthorized: false
+    rejectUnauthorized: process.env.NODE_ENV === 'production'  // Only verify SSL in production
   }
 });
 
@@ -62,50 +78,32 @@ const transporter = nodemailer.createTransport({
 const verifyConnection = async () => {
   try {
     console.log('Verifying SMTP connection...');
-    console.log('Using email:', 'offers@nativeagency.info');
-    console.log('Using host:', 'smtp.zoho.eu');
-    console.log('Using port:', 465);
-    console.log('Using security type: SSL');
+    console.log('Environment:', process.env.NODE_ENV || 'development');
+    console.log('Using email:', EMAIL_FROM);
     
     await transporter.verify();
     console.log('SMTP connection verified successfully!');
   } catch (error) {
-    console.error('SSL Connection failed, trying TLS...');
-    
-    // If SSL fails, try TLS configuration
-    transporter.options.port = 587;
-    transporter.options.secure = false;
-    
-    console.log('Trying TLS configuration...');
-    console.log('Using port:', 587);
-    console.log('Using security type: TLS');
-    
-    try {
-      await transporter.verify();
-      console.log('TLS connection verified successfully!');
-    } catch (tlsError) {
-      console.error('Both SSL and TLS connections failed:', {
-        sslError: error.message,
-        tlsError: tlsError.message
-      });
-      process.exit(1);
+    console.error('SMTP Connection failed:', error.message);
+    if (process.env.NODE_ENV === 'production') {
+      process.exit(1);  // Exit in production if email setup fails
     }
   }
 };
 
 // Email endpoint
-app.post('/api/send-quote', async (req, res) => {
+app.post('/api/book-meeting', async (req, res) => {
   const { name, email, company, phone, message } = req.body;
 
   try {
-    // Email to business (sent from offers@ to contact@)
+    // Email to business (sent from EMAIL_FROM to EMAIL_TO)
     console.log('Attempting to send business email...');
     const businessEmail = await transporter.sendMail({
-      from: 'offers@nativeagency.info',
-      to: 'contact@nativeagency.info',  // Changed to send to contact@
-      subject: 'New Quote Request from Website',
+      from: EMAIL_FROM,
+      to: EMAIL_TO,
+              subject: 'New Meeting Booking Request from Website',
       html: `
-        <h2>New Quote Request</h2>
+                  <h2>New Meeting Booking Request</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Company:</strong> ${company || 'Not provided'}</p>
@@ -119,13 +117,13 @@ app.post('/api/send-quote', async (req, res) => {
     // Confirmation email to user
     console.log('Attempting to send confirmation email...');
     const confirmationEmail = await transporter.sendMail({
-      from: 'offers@nativeagency.info',
+      from: EMAIL_FROM,
       to: email,
       subject: 'Thank you for contacting NΛTIVE Agency',
       html: `
         <h2>Thank you for contacting NΛTIVE Agency</h2>
         <p>Dear ${name},</p>
-        <p>We have received your quote request and will get back to you shortly.</p>
+        <p>We have received your meeting booking request and will get back to you shortly.</p>
         <p>Here's a summary of your request:</p>
         <p><strong>Message:</strong></p>
         <p>${message}</p>
@@ -156,6 +154,6 @@ const PORT = process.env.PORT || 3001;
 // Verify SMTP connection before starting the server
 verifyConnection().then(() => {
   app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
   });
 }); 

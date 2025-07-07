@@ -56,13 +56,13 @@ body, .app {
   font-weight: 900;
   font-size: 2rem;
   letter-spacing: 2px;
-  color: #00c9ff;
+  color: #00e6d0;
   text-shadow: 0 2px 8px #0f2027;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 .logo:hover {
-  color: #00e6d0;
+  color: #00c9ff;
 }
 .nav-actions {
   display: flex;
@@ -70,7 +70,7 @@ body, .app {
   gap: 32px;
 }
 .quote-btn {
-  background: #00c9ff;
+  background: #00e6d0;
   color: #0f2027;
   font-weight: 700;
   border: none;
@@ -82,7 +82,7 @@ body, .app {
   transition: background 0.2s, color 0.2s;
 }
 .quote-btn:hover {
-  background: #00e6d0;
+  background: #00c9ff;
   color: #00334e;
 }
 .menu-icon {
@@ -167,7 +167,7 @@ body, .app {
   margin-bottom: 18px;
 }
 .cta-button {
-  background: #00c9ff;
+  background: #00e6d0;
   color: #0f2027;
   font-weight: 700;
   border: none;
@@ -183,7 +183,7 @@ body, .app {
   gap: 8px;
 }
 .cta-button:hover {
-  background: #00e6d0;
+  background: #00c9ff;
   color: #00334e;
 }
 .arrow {
@@ -328,8 +328,8 @@ body, .app {
 .mockup-track {
   display: flex;
   align-items: center;
-  width: 180vw;
-  min-width: 180vw;
+  width: 300vw;
+  min-width: 300vw;
   animation: mockup-slide-track 120s linear infinite;
   gap: 1.2rem;
   padding: 2rem 0 2rem 5vw;
@@ -369,8 +369,8 @@ body, .app {
   }
   .mockup-track {
     padding-left: 0;
-    width: 250vw;
-    min-width: 250vw;
+    width: 400vw;
+    min-width: 400vw;
   }
 }
 
@@ -384,8 +384,8 @@ body, .app {
   }
   .mockup-track {
     padding-left: 0;
-    width: 350vw;
-    min-width: 350vw;
+    width: 500vw;
+    min-width: 500vw;
   }
 }
 
@@ -1088,6 +1088,11 @@ body, .app {
   opacity: 0;
   transform: translateY(20px);
   animation: revealChar 0.5s forwards;
+}
+
+.menu-char-space {
+  width: 0.3em;
+  min-width: 0.3em;
 }
 
 .menu-link:hover .menu-char {
@@ -2141,7 +2146,7 @@ body, .app {
 }
 
 .footer-cta {
-  background: linear-gradient(135deg, #00c9ff, #007bff);
+  background: linear-gradient(135deg, #00e6d0, #00c9ff);
   color: #fff;
   border: none;
   padding: 1rem 2rem;
@@ -2154,7 +2159,7 @@ body, .app {
 
 .footer-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 201, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 230, 208, 0.3);
 }
 
 .footer-bottom {

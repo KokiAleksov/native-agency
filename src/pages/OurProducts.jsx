@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
+import OptimizedImage from '../components/OptimizedImage';
 import './OurProducts.css';
 
 const products = [
@@ -123,7 +124,12 @@ const OurProducts = () => {
             style={{ cursor: 'pointer' }}
           >
             <div className="product-image-container">
-              <img src={product.image} alt={product.title} className="product-image" />
+              <OptimizedImage 
+                src={product.image} 
+                alt={product.title} 
+                className="product-image" 
+                loading="lazy"
+              />
               <div className="product-overlay">
                 <Link to={`/project/${product.id}`} className="view-project">
                   View Project

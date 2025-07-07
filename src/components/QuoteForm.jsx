@@ -17,8 +17,8 @@ const QuoteForm = () => {
 
   // Get the API URL based on environment
   const API_URL = import.meta.env.PROD 
-    ? 'https://nativeagency.info/api/send-quote'  // Production URL
-    : 'http://localhost:3001/api/send-quote';     // Development URL
+      ? '/api/book-meeting'  // Production URL (relative path)
+  : 'http://localhost:3001/api/book-meeting';     // Development URL
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -83,7 +83,7 @@ const QuoteForm = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight text-white"
           >
-            Get a Quote
+            Book a Meeting
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}

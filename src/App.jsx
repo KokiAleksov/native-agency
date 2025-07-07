@@ -4,6 +4,7 @@ import { FaBullseye, FaGlobe, FaLightbulb, FaHandshake, FaShoppingCart, FaSearch
 import './App.css'
 import './styles/StatsCounter.css'
 import './styles/Pages.css'
+import './styles/image-optimization.css'
 import QuoteForm from './components/QuoteForm'
 import StatsCounter from './components/StatsCounter'
 import Services from './pages/Services'
@@ -13,6 +14,8 @@ import OurWorkCarousel from './components/OurWorkCarousel'
 import ScrollToTop from './components/ScrollToTop'
 import ProjectDetail from './pages/ProjectDetail'
 import Footer from './components/Footer'
+import OptimizedImage from './components/OptimizedImage'
+import { preloadImages, CRITICAL_IMAGES } from './utils/imageOptimization'
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -29,6 +32,11 @@ function App() {
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Preload critical images
+  useEffect(() => {
+    preloadImages(CRITICAL_IMAGES).catch(console.error)
   }, [])
 
   useEffect(() => {
@@ -152,7 +160,7 @@ function App() {
     { title: 'Services', link: '/services' },
     { title: 'Our Products', link: '/products' },
     { title: 'About', link: '/about' },
-    { title: 'Contact', link: '/quote' }
+    { title: 'Book a Meeting', link: '/quote' }
   ]
 
   const handleQuoteClick = () => {
@@ -238,7 +246,7 @@ function App() {
         <div className="nav-content">
           <Link to="/" className="logo" onClick={handleLogoClick}>NΛTIVE</Link>
           <div className="nav-actions">
-            <button className="quote-btn" onClick={handleQuoteClick}>REQUEST A QUOTE</button>
+            <button className="quote-btn" onClick={handleQuoteClick}>BOOK A MEETING</button>
             <div className={`menu-icon ${isMenuOpen ? 'menu-icon-close' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? '✕' : '☰'} MENU
             </div>
@@ -259,8 +267,8 @@ function App() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.title.split('').map((char, i) => (
-                  <span key={i} className="menu-char" style={{ animationDelay: `${i * 0.05}s` }}>
-                    {char}
+                  <span key={i} className={`menu-char ${char === ' ' ? 'menu-char-space' : ''}`} style={{ animationDelay: `${i * 0.05}s` }}>
+                    {char === ' ' ? '\u00A0' : char}
                   </span>
                 ))}
               </Link>
@@ -285,50 +293,268 @@ function App() {
                 <div className="hero-label">PREMIUM WEB DESIGN AGENCY</div>
                 <h1 className="hero-title">WE GROW<br/>BRANDS ONLINE</h1>
                 <p className="hero-subheadline">Custom Websites, Branding & Digital Marketing</p>
-                <button className="cta-button" onClick={handleQuoteClick}>REQUEST A QUOTE <span className="arrow">&rarr;</span></button>
+                <button className="cta-button" onClick={handleQuoteClick}>BOOK A MEETING <span className="arrow">&rarr;</span></button>
               </div>
               <div className="hero-bg-slider">
                 <div className="mockup-track">
-                  {/* First set */}
+                  {/* First set - All product images */}
                   <div className="mockup-slide mockup1">
-                    <img src="/images/Screenshot 2025-06-05 120402.png" alt="Screenshot" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/Screenshot 2025-06-26 131758.png" 
+                      alt="Cult Fit" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
                   </div>
                   <div className="mockup-slide mockup2">
-                    <img src="/images/dynamic-website-examples.jpg" alt="Dynamic Website Examples" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/Screenshot 2025-06-26 133422.png" 
+                      alt="Pearl Dental" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
                   </div>
                   <div className="mockup-slide mockup3">
-                    <img src="/images/braintech.webp" alt="Braintech Hero" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/bos.png" 
+                      alt="Bo's Coffee" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
                   </div>
                   <div className="mockup-slide mockup4">
-                    <img src="/images/sky.garden.jpg" alt="Sky Garden" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/plumber.png" 
+                      alt="Plumber Service" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
                   </div>
-                  <div className="mockup-slide mockup5"></div>
-                  {/* Second set (duplicate) */}
+                  <div className="mockup-slide mockup5">
+                    <OptimizedImage 
+                      src="/images/kebap.png" 
+                      alt="FoodExpress" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup6">
+                    <OptimizedImage 
+                      src="/images/fitlife.png" 
+                      alt="FitLife" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup7">
+                    <OptimizedImage 
+                      src="/images/estate.png" 
+                      alt="RealEstateHub" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup8">
+                    <OptimizedImage 
+                      src="/images/hub.png" 
+                      alt="ConnectHub" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup9">
+                    <OptimizedImage 
+                      src="/images/event.png" 
+                      alt="EventMaster" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup10">
+                    <OptimizedImage 
+                      src="/images/travel.png" 
+                      alt="TravelPlanner" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup11">
+                    <OptimizedImage 
+                      src="/images/job.png" 
+                      alt="Job Platform" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
+                  </div>
+                  {/* Second set (duplicate for seamless loop) */}
                   <div className="mockup-slide mockup1">
-                    <img src="/images/Screenshot 2025-06-05 120402.png" alt="Screenshot" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/Screenshot 2025-06-26 131758.png" 
+                      alt="Cult Fit" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
                   </div>
                   <div className="mockup-slide mockup2">
-                    <img src="/images/dynamic-website-examples.jpg" alt="Dynamic Website Examples" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/Screenshot 2025-06-26 133422.png" 
+                      alt="Pearl Dental" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
                   </div>
                   <div className="mockup-slide mockup3">
-                    <img src="/images/braintech.webp" alt="Braintech Hero" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/bos.png" 
+                      alt="Bo's Coffee" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
                   </div>
                   <div className="mockup-slide mockup4">
-                    <img src="/images/sky.garden.jpg" alt="Sky Garden" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/plumber.png" 
+                      alt="Plumber Service" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
                   </div>
-                  <div className="mockup-slide mockup5"></div>
-                  {/* Third set (duplicate) */}
+                  <div className="mockup-slide mockup5">
+                    <OptimizedImage 
+                      src="/images/kebap.png" 
+                      alt="FoodExpress" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup6">
+                    <OptimizedImage 
+                      src="/images/fitlife.png" 
+                      alt="FitLife" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup7">
+                    <OptimizedImage 
+                      src="/images/estate.png" 
+                      alt="RealEstateHub" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup8">
+                    <OptimizedImage 
+                      src="/images/hub.png" 
+                      alt="ConnectHub" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup9">
+                    <OptimizedImage 
+                      src="/images/event.png" 
+                      alt="EventMaster" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup10">
+                    <OptimizedImage 
+                      src="/images/travel.png" 
+                      alt="TravelPlanner" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup11">
+                    <OptimizedImage 
+                      src="/images/job.png" 
+                      alt="Job Platform" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  {/* Third set (duplicate for seamless loop) */}
                   <div className="mockup-slide mockup1">
-                    <img src="/images/Screenshot 2025-06-05 120402.png" alt="Screenshot" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/Screenshot 2025-06-26 131758.png" 
+                      alt="Cult Fit" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
                   </div>
                   <div className="mockup-slide mockup2">
-                    <img src="/images/dynamic-website-examples.jpg" alt="Dynamic Website Examples" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/Screenshot 2025-06-26 133422.png" 
+                      alt="Pearl Dental" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
                   </div>
                   <div className="mockup-slide mockup3">
-                    <img src="/images/braintech.webp" alt="Braintech Hero" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/bos.png" 
+                      alt="Bo's Coffee" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
                   </div>
                   <div className="mockup-slide mockup4">
-                    <img src="/images/sky.garden.jpg" alt="Sky Garden" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/plumber.png" 
+                      alt="Plumber Service" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup5">
+                    <OptimizedImage 
+                      src="/images/kebap.png" 
+                      alt="FoodExpress" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup6">
+                    <OptimizedImage 
+                      src="/images/fitlife.png" 
+                      alt="FitLife" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup7">
+                    <OptimizedImage 
+                      src="/images/estate.png" 
+                      alt="RealEstateHub" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup8">
+                    <OptimizedImage 
+                      src="/images/hub.png" 
+                      alt="ConnectHub" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup9">
+                    <OptimizedImage 
+                      src="/images/event.png" 
+                      alt="EventMaster" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup10">
+                    <OptimizedImage 
+                      src="/images/travel.png" 
+                      alt="TravelPlanner" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
                   </div>
                   <div className="mockup-slide mockup5"></div>
                 </div>
@@ -336,48 +562,273 @@ function App() {
               {/* Second (reverse) slider */}
               <div className="hero-bg-slider reverse">
                 <div className="mockup-track reverse">
-                  {/* First set */}
+                  {/* First set - All product images */}
                   <div className="mockup-slide mockup1">
-                    <img src="/images/Screenshot 2025-06-05 120402.png" alt="Screenshot" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/Screenshot 2025-06-26 131758.png" 
+                      alt="Cult Fit" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
                   </div>
                   <div className="mockup-slide mockup2">
-                    <img src="/images/dynamic-website-examples.jpg" alt="Dynamic Website Examples" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/Screenshot 2025-06-26 133422.png" 
+                      alt="Pearl Dental" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
                   </div>
                   <div className="mockup-slide mockup3">
-                    <img src="/images/braintech.webp" alt="Braintech Hero" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/bos.png" 
+                      alt="Bo's Coffee" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
                   </div>
                   <div className="mockup-slide mockup4">
-                    <img src="/images/sky.garden.jpg" alt="Sky Garden" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/plumber.png" 
+                      alt="Plumber Service" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
                   </div>
-                  <div className="mockup-slide mockup5"></div>
-                  {/* Second set (duplicate) */}
+                  <div className="mockup-slide mockup5">
+                    <OptimizedImage 
+                      src="/images/kebap.png" 
+                      alt="FoodExpress" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup6">
+                    <OptimizedImage 
+                      src="/images/fitlife.png" 
+                      alt="FitLife" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup7">
+                    <OptimizedImage 
+                      src="/images/estate.png" 
+                      alt="RealEstateHub" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup8">
+                    <OptimizedImage 
+                      src="/images/hub.png" 
+                      alt="ConnectHub" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup9">
+                    <OptimizedImage 
+                      src="/images/event.png" 
+                      alt="EventMaster" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup10">
+                    <OptimizedImage 
+                      src="/images/travel.png" 
+                      alt="TravelPlanner" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup11">
+                    <OptimizedImage 
+                      src="/images/job.png" 
+                      alt="Job Platform" 
+                      className="mockup-img" 
+                      loading="eager"
+                    />
+                  </div>
+                  {/* Second set (duplicate for seamless loop) */}
                   <div className="mockup-slide mockup1">
-                    <img src="/images/Screenshot 2025-06-05 120402.png" alt="Screenshot" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/Screenshot 2025-06-26 131758.png" 
+                      alt="Cult Fit" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
                   </div>
                   <div className="mockup-slide mockup2">
-                    <img src="/images/dynamic-website-examples.jpg" alt="Dynamic Website Examples" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/Screenshot 2025-06-26 133422.png" 
+                      alt="Pearl Dental" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
                   </div>
                   <div className="mockup-slide mockup3">
-                    <img src="/images/braintech.webp" alt="Braintech Hero" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/bos.png" 
+                      alt="Bo's Coffee" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
                   </div>
                   <div className="mockup-slide mockup4">
-                    <img src="/images/sky.garden.jpg" alt="Sky Garden" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/plumber.png" 
+                      alt="Plumber Service" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
                   </div>
-                  <div className="mockup-slide mockup5"></div>
-                  {/* Third set (duplicate) */}
+                  <div className="mockup-slide mockup5">
+                    <OptimizedImage 
+                      src="/images/kebap.png" 
+                      alt="FoodExpress" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup6">
+                    <OptimizedImage 
+                      src="/images/fitlife.png" 
+                      alt="FitLife" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup7">
+                    <OptimizedImage 
+                      src="/images/estate.png" 
+                      alt="RealEstateHub" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup8">
+                    <OptimizedImage 
+                      src="/images/hub.png" 
+                      alt="ConnectHub" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup9">
+                    <OptimizedImage 
+                      src="/images/event.png" 
+                      alt="EventMaster" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup10">
+                    <OptimizedImage 
+                      src="/images/travel.png" 
+                      alt="TravelPlanner" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup11">
+                    <OptimizedImage 
+                      src="/images/job.png" 
+                      alt="Job Platform" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  {/* Third set (duplicate for seamless loop) */}
                   <div className="mockup-slide mockup1">
-                    <img src="/images/Screenshot 2025-06-05 120402.png" alt="Screenshot" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/Screenshot 2025-06-26 131758.png" 
+                      alt="Cult Fit" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
                   </div>
                   <div className="mockup-slide mockup2">
-                    <img src="/images/dynamic-website-examples.jpg" alt="Dynamic Website Examples" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/Screenshot 2025-06-26 133422.png" 
+                      alt="Pearl Dental" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
                   </div>
                   <div className="mockup-slide mockup3">
-                    <img src="/images/braintech.webp" alt="Braintech Hero" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/bos.png" 
+                      alt="Bo's Coffee" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
                   </div>
                   <div className="mockup-slide mockup4">
-                    <img src="/images/sky.garden.jpg" alt="Sky Garden" className="mockup-img" />
+                    <OptimizedImage 
+                      src="/images/plumber.png" 
+                      alt="Plumber Service" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
                   </div>
-                  <div className="mockup-slide mockup5"></div>
+                  <div className="mockup-slide mockup5">
+                    <OptimizedImage 
+                      src="/images/kebap.png" 
+                      alt="FoodExpress" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup6">
+                    <OptimizedImage 
+                      src="/images/fitlife.png" 
+                      alt="FitLife" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup7">
+                    <OptimizedImage 
+                      src="/images/estate.png" 
+                      alt="RealEstateHub" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup8">
+                    <OptimizedImage 
+                      src="/images/hub.png" 
+                      alt="ConnectHub" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup9">
+                    <OptimizedImage 
+                      src="/images/event.png" 
+                      alt="EventMaster" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup10">
+                    <OptimizedImage 
+                      src="/images/travel.png" 
+                      alt="TravelPlanner" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mockup-slide mockup11">
+                    <OptimizedImage 
+                      src="/images/job.png" 
+                      alt="Job Platform" 
+                      className="mockup-img" 
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
               </div>
             </section>
@@ -432,7 +883,12 @@ function App() {
                   </p>
                 </div>
                 <div className="agency-right">
-                  <img src="/images/web-development-team-collaboration-illustration-yz5n469ruq1f8yb9-yz5n469ruq1f8yb9.png" alt="Web Development Team Collaboration Illustration" className="agency-banner" />
+                  <OptimizedImage 
+                    src="/images/web-development-team-collaboration-illustration-yz5n469ruq1f8yb9-yz5n469ruq1f8yb9.png" 
+                    alt="Web Development Team Collaboration Illustration" 
+                    className="agency-banner" 
+                    loading="lazy"
+                  />
                 </div>
               </div>
             </section>

@@ -172,7 +172,7 @@
 .submit-button {
   width: 100%;
   padding: 1rem;
-  background: #00c9ff;
+  background: #00e6d0;
   color: #0f2027;
   border: none;
   border-radius: 8px;
@@ -185,7 +185,7 @@
 }
 
 .submit-button:hover {
-  background: #00e6d0;
+  background: #00c9ff;
   transform: translateY(-2px);
 }
 
@@ -251,7 +251,7 @@
 .back-home {
   margin-top: 2rem;
   padding: 1rem 2rem;
-  background: #00c9ff;
+  background: #00e6d0;
   color: #0f2027;
   border: none;
   border-radius: 8px;
@@ -262,7 +262,7 @@
 }
 
 .back-home:hover {
-  background: #00e6d0;
+  background: #00c9ff;
   transform: translateY(-2px);
 }
 

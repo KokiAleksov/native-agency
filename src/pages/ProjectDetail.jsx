@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import OptimizedImage from '../components/OptimizedImage';
 
 // Expanded static project data for all projects
 const projectsData = {
@@ -74,6 +75,120 @@ const projectsData = {
       "Customer reviews and ratings",
     ],
     liveUrl: 'https://unclognyc.com/',
+  },
+  'food-delivery': {
+    title: 'FoodExpress',
+    subtitle: 'Advanced food delivery platform',
+    images: [
+      '/images/kebap.png',
+    ],
+    technologies: ['React', 'Firebase', 'Google Maps API', 'Stripe'],
+    year: '2024',
+    client: 'FoodExpress Inc.',
+    description: 'Advanced food delivery platform with real-time tracking and seamless ordering experience.',
+    features: [
+      'Real-time order tracking',
+      'Restaurant discovery and menu browsing',
+      'Secure payment processing',
+      'Driver location and ETA updates',
+      'Order history and favorites',
+    ],
+    liveUrl: 'https://www.foodexpress.ro/',
+  },
+  'fitness-app': {
+    title: 'FitLife',
+    subtitle: 'Personalized fitness tracking platform',
+    images: [
+      '/images/fitlife.png',
+    ],
+    technologies: ['React', 'Firebase', 'Redux', 'Chart.js'],
+    year: '2024',
+    client: 'FitLife Technologies',
+    description: 'Personalized fitness tracking and workout planning application with AI-powered recommendations.',
+    features: [
+      'Personalized workout plans',
+      'Progress tracking and analytics',
+      'Nutrition planning and calorie counting',
+      'Social features and challenges',
+      'Integration with fitness devices',
+    ],
+    liveUrl: 'https://fitlifebrands.com/',
+  },
+  'real-estate-hub': {
+    title: 'RealEstateHub',
+    subtitle: 'Modern real estate platform',
+    images: [
+      '/images/estate.png',
+    ],
+    technologies: ['React', 'Firebase', 'Three.js', 'AI/ML'],
+    year: '2024',
+    client: 'RealEstateHub Corp.',
+    description: 'Modern real estate platform with virtual tours and AI-powered recommendations for property discovery.',
+    features: [
+      'Virtual property tours with 3D visualization',
+      'AI-powered property recommendations',
+      'Advanced search and filtering',
+      'Mortgage calculator and financing tools',
+      'Agent and client communication platform',
+    ],
+    liveUrl: 'https://exprealestatehub.com/',
+  },
+  'social-network': {
+    title: 'ConnectHub',
+    subtitle: 'Professional networking platform',
+    images: [
+      '/images/hub.png',
+    ],
+    technologies: ['React', 'Firebase', 'Socket.io', 'Node.js'],
+    year: '2024',
+    client: 'ConnectHub Networks',
+    description: 'Professional networking platform with advanced matching algorithms and real-time communication.',
+    features: [
+      'Professional profile creation and networking',
+      'Advanced matching algorithms',
+      'Real-time messaging and video calls',
+      'Job posting and application system',
+      'Industry-specific communities and groups',
+    ],
+    liveUrl: 'https://connecthub.io/',
+  },
+  'event-planner': {
+    title: 'EventMaster',
+    subtitle: 'Comprehensive event planning platform',
+    images: [
+      '/images/event.png',
+    ],
+    technologies: ['React', 'Firebase', 'FullCalendar', 'Stripe'],
+    year: '2024',
+    client: 'EventMaster Solutions',
+    description: 'Comprehensive event planning and management platform for seamless event organization.',
+    features: [
+      'Event creation and management dashboard',
+      'Ticket sales and registration system',
+      'Venue booking and vendor management',
+      'Real-time event analytics and reporting',
+      'Mobile app for event attendees',
+    ],
+    liveUrl: 'https://eventmaster.ie/',
+  },
+  'travel-planner': {
+    title: 'Stippl',
+    subtitle: 'Intelligent travel planning platform',
+    images: [
+      '/images/travel.png',
+    ],
+    technologies: ['React', 'Firebase', 'Google Places API', 'Maps API'],
+    year: '2024',
+    client: 'TravelPlanner International',
+    description: 'Intelligent travel planning and booking platform with AI-powered itinerary suggestions.',
+    features: [
+      'AI-powered travel itinerary planning',
+      'Hotel and flight booking integration',
+      'Local attraction and restaurant recommendations',
+      'Travel budget tracking and management',
+      'Travel community and reviews',
+    ],
+    liveUrl: 'https://stippl.io/',
   },
 };
 
@@ -152,10 +267,11 @@ const ProjectDetail = () => {
             <div className="relative w-full max-w-3xl">
               {/* Main Image */}
               <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl shadow-2xl border-4 border-gray-800">
-                <img
+                <OptimizedImage
                     src={project.images[currentImageIndex]}
                     alt={`${project.title} - View ${currentImageIndex + 1}`}
                     className="w-full h-full object-cover"
+                    loading="eager"
                 />
               </div>
 
@@ -210,10 +326,11 @@ const ProjectDetail = () => {
                         className="group cursor-pointer bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700 hover:border-green-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-green-400/20 flex flex-col h-full"
                     >
                       <div className="relative aspect-[16/9] overflow-hidden flex-shrink-0">
-                        <img
+                        <OptimizedImage
                             src={project.images[0]}
                             alt={project.title}
                             className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                            loading="lazy"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300" />
                         <div className="absolute bottom-0 left-0 right-0 p-4">

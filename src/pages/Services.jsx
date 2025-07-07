@@ -17,7 +17,7 @@ const Services = () => {
       ],
       longDescription: 'We create stunning, high-performance websites that not only look great but also drive results. Our development process combines cutting-edge technology with user-centered design principles.',
       icon: <FaCode className="service-icon" />,
-      ctaText: 'Start Your Project',
+      ctaText: 'Read More',
       ctaLink: '/contact'
     },
     {
@@ -31,7 +31,7 @@ const Services = () => {
       ],
       longDescription: 'Our digital marketing strategies are data-driven and results-focused. We help businesses increase their online visibility, generate qualified leads, and achieve sustainable growth through targeted campaigns and optimization.',
       icon: <FaChartLine className="service-icon" />,
-      ctaText: 'Learn More',
+      ctaText: 'Read More',
       ctaLink: '/contact'
     },
     {
@@ -45,7 +45,7 @@ const Services = () => {
       ],
       longDescription: 'We help businesses build strong, memorable brands that resonate with their target audience. Our brand strategy services combine creative thinking with market insights to create compelling brand stories.',
       icon: <FaPalette className="service-icon" />,
-      ctaText: 'Get Started',
+      ctaText: 'Read More',
       ctaLink: '/contact'
     }
   ];
@@ -163,12 +163,6 @@ const Services = () => {
                       <p className="text-gray-300 leading-relaxed mb-4">
                         {service.longDescription}
                       </p>
-                      <a
-                        href={service.ctaLink}
-                        className="inline-flex items-center text-green-400 hover:text-green-300 transition-colors duration-300"
-                      >
-                        Learn more <FaArrowRight className="ml-2" />
-                      </a>
                     </motion.div>
                   )}
                 </AnimatePresence>
